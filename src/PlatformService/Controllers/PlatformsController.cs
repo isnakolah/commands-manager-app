@@ -32,7 +32,7 @@ public class PlatformsController : ControllerBase
     [HttpGet("{id:int}")]
     public async Task<ActionResult<PlatformReadDTO>> GetPlatformById([FromRoute] int id)
     {
-        if (await _platformRepository.GetByIdAsync(id) is not {} platform)
+        if (await _platformRepository.GetByIdAsync(id) is not {} platform) 
         {
             return NotFound();
         }
