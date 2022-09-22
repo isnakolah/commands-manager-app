@@ -2,6 +2,14 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformService", "src\PlatformService\PlatformService.csproj", "{95B5C212-ADF6-4917-AE92-F855DD194D01}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{4F578702-67E8-465E-AA07-888F2F0426F8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "K8S", "K8S", "{22A516AC-09F4-4AD1-8616-38D69E7353DB}"
+	ProjectSection(SolutionItems) = preProject
+		K8S\platforms-depl.yaml = K8S\platforms-depl.yaml
+		K8S\platforms-np-srv.yaml = K8S\platforms-np-srv.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +20,8 @@ Global
 		{95B5C212-ADF6-4917-AE92-F855DD194D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95B5C212-ADF6-4917-AE92-F855DD194D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95B5C212-ADF6-4917-AE92-F855DD194D01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{22A516AC-09F4-4AD1-8616-38D69E7353DB} = {4F578702-67E8-465E-AA07-888F2F0426F8}
 	EndGlobalSection
 EndGlobal
