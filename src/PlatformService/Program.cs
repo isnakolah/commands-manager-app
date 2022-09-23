@@ -1,11 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using PlatformService.Data;
+using PlatformService.SyncDataServices.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMem"));
-builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<IPlatformRepository, PlatformRepository>();
+builder.Services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>(
+    client => client.BaseAddress = new Uri(builder.Configuration["CommandService:BaseUrl"]));
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddDbContext<AppDbContext>(
+    opt => opt.UseInMemoryDatabase("InMem"));
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -17,8 +22,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger().UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-app.UseAuthorization();
 app.MapControllers();
 app.PrepPopulation();
 
