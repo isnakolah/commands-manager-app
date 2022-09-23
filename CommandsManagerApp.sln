@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "K8S", "K8S", "{22A516AC-09F
 	ProjectSection(SolutionItems) = preProject
 		K8S\platforms-depl.yaml = K8S\platforms-depl.yaml
 		K8S\platforms-np-srv.yaml = K8S\platforms-np-srv.yaml
+		K8S\commands-depl.yaml = K8S\commands-depl.yaml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandsService", "src\CommandsService\CommandsService.csproj", "{C711EAB2-93C2-4F4A-AA89-3BC5D54EB0F3}"
