@@ -15,7 +15,7 @@ public class PlatformsController : ControllerBase
     private readonly ICommandDataClient _commandDataClient;
     private readonly IMapper _mapper;
 
-    public PlatformsController(IPlatformRepository platformRepository, IMapper mapper, ICommandDataClient commandDataClient)
+    public PlatformsController(IPlatformRepository platformRepository, ICommandDataClient commandDataClient, IMapper mapper)
     {
         _platformRepository = platformRepository;
         _commandDataClient = commandDataClient;
@@ -25,9 +25,7 @@ public class PlatformsController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<PlatformReadDTO>>> GetPlatforms()
     {
-        var platforms = await _platformRepository.GetAllAsync();
-
-        var platformsReadDTOs = _mapper.Map<IEnumerable<PlatformReadDTO>>(platforms);
+        var platformsReadDTOs = await _platformRepository.GetAllDTOsAsync();
 
         return Ok(platformsReadDTOs);
     }
@@ -35,12 +33,10 @@ public class PlatformsController : ControllerBase
     [HttpGet("{id:int}")]
     public async Task<ActionResult<PlatformReadDTO>> GetPlatformById([FromRoute] int id)
     {
-        if (await _platformRepository.GetByIdAsync(id) is not {} platform) 
+        if (await _platformRepository.GetDTOByIdAsync(id) is not {} platformReadDTO) 
         {
             return NotFound();
         }
-
-        var platformReadDTO = _mapper.Map<PlatformReadDTO>(platform);
 
         return Ok(platformReadDTO);
     }
