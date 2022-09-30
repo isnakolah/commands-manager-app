@@ -25,10 +25,10 @@ spec:
         - name: SA_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mssql
+              name: mssql-sa-pass
               key: SA_PASSWORD
         volumeMounts:
-        - mountPath: /var/opt/mssql
+        - mountPath: /var/opt/mssql/data
           name: mssql-db
       volumes:
       - name: mssql-db
